@@ -2,9 +2,12 @@
 
 ## [![CS50](https://img.shields.io/badge/CS50-red)](https://cs50.harvard.edu/python/weeks/0/#week-0-functions)  Week 0 - Functions
 
-- `input()` prompts the user for input and returns it as a string.
-- `print()` outputs text to the console.
-- `str.strip()` removes whitespace from the beginning and end of a string and returns a new string.
-- `str.title()` converts a string to title case and returns a new string.
-- `str.upper()` converts a string to uppercase and returns a new string.
-- `str.lower()` converts a string to lowercase and returns a new string.
+| Description | Python | Go |
+|---|---|---|
+| Prompts the user for input | `input()` | `fmt.Scanln()` |
+| Outputs text to the console | `print()` | `fmt.Println()` |
+| Removes leading/trailing whitespace | `str.strip()` | `strings.TrimSpace()` |
+| Converts a string to title case | `str.title()` | `strings.Title()` |
+| Converts a string to uppercase | `str.upper()` | `strings.ToUpper()` |
+| Converts a string to lowercase | `str.lower()` | `strings.ToLower()` |
+| Rounds a number | `round(number, ndigits)` | `math.Round()` |
