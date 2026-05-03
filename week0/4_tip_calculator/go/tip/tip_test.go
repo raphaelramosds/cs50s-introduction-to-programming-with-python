@@ -48,8 +48,8 @@ func Test5PercentToFloat(t *testing.T) {
 	}
 }
 
-func Test50Dollars5Percent(t *testing.T) {
-	tipStr, _ := TipCalculator("$50", "5%")
+func Test50Dollars15Percent(t *testing.T) {
+	tipStr, _ := TipCalculator("$50", "15%")
 	tipStrExp := "Leave $7.50"
 	if tipStr != tipStrExp {
 		t.Errorf("%s should be %s", string(tipStr), string(tipStrExp))
@@ -57,7 +57,7 @@ func Test50Dollars5Percent(t *testing.T) {
 }
 
 func Test100Dollars18Percent(t *testing.T) {
-	tipStr, _ := TipCalculator("$100", "18%")
+	tipStr, _ := TipCalculator("$100.00", "18%")
 	tipStrExp := "Leave $18.00"
 	if tipStr != tipStrExp {
 		t.Errorf("%s should be %s", string(tipStr), string(tipStrExp))
@@ -65,7 +65,7 @@ func Test100Dollars18Percent(t *testing.T) {
 }
 
 func Test15Dollars25Percent(t *testing.T) {
-	tipStr, _ := TipCalculator("$15", "25%")
+	tipStr, _ := TipCalculator("$15.00", "25%")
 	tipStrExp := "Leave $3.75"
 	if tipStr != tipStrExp {
 		t.Errorf("%s should be %s", string(tipStr), string(tipStrExp))
