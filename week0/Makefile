@@ -1,7 +1,11 @@
-.PHONY: test-py test-go
+TARGETS=test-0_indoor \
+	test-1_playback
 
-test-py:
-	@pytest
+test-%:
+	@echo "($*) Running Python tests...\n"
+	@if [ -d "$*/python" ]; then cd "$*/python" && pytest; fi
 
-test-go:
-	@cd 0_indoor/go/indoor && go test 
+	@echo "($*) Running Go tests...\n"
+	@if [ -d "$*/go" ]; then cd "$*/go" && go test ./...; fi
+
+all: $(TARGETS)
