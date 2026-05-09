@@ -21,11 +21,13 @@ Each problem set is implemented in **Python** and/or **Go** as a way to review P
 
 ### Week 1 — Conditionals
 
-| Problem | Go |
-|---|---|
-| `0_deep_thought` | `if`/`else`, logical OR (`\|\|`), string equality |
-| `1_bank` | `strings.HasPrefix`, `strings.ToLower`, byte indexing (`s[0]`), `if`/`else if`, `strconv.Itoa` |
-| `2_extensions` | `switch`/`case`/`default`, `regexp.MustCompile`, `FindStringSubmatch`, regex capture groups, `strings.TrimSpace` |
+| Problem | Python | Go |
+|---|---|---|
+| `0_deep_thought` | — | `if`/`else`, logical OR (`\|\|`), string equality |
+| `1_bank` | — | `strings.HasPrefix`, `strings.ToLower`, byte indexing (`s[0]`), `if`/`else if`, `strconv.Itoa` |
+| `2_extensions` | — | `switch`/`case`/`default`, `regexp.MustCompile`, `FindStringSubmatch`, regex capture groups, `strings.TrimSpace` |
+| `3_math_interpreter` | `re.match` with capture groups (`.group()`), `str.strip/lower/replace`, `float()`, floor division (`//`), `ZeroDivisionError`, `ValueError` | — |
+| `4_meal_time` | `str.split(":")`, `float()`, numeric range checks (`>=`/`<=`), helper function for unit conversion | — |
 
 ---
 
@@ -35,8 +37,11 @@ Each problem set is implemented in **Python** and/or **Go** as a way to review P
 - **String methods** — `.lower()`, `.replace()`, `.strip()`, chained calls
 - **Numeric literals** — underscores for readability (`90_000_000_000_000_000`)
 - **f-strings** — with format specifiers (e.g. `:.2f`)
-- **Regular expressions** — `re.fullmatch` for strict pattern matching
+- **Regular expressions** — `re.fullmatch` for strict matching, `re.match` with capture groups (`.group()`)
+- **Floor division** — `//` operator for integer-valued results
+- **Built-in exceptions** — raising `ZeroDivisionError` directly; custom exceptions via `ValueError` with messages
 - **Custom exceptions** — subclassing `ValueError`, calling `super().__init__`
+- **String splitting** — `str.split(":")` to unpack structured tokens
 - **Module guard** — `if __name__ == "__main__"` entry point pattern
 - **String slicing** — `dollars[1:]` to strip a leading character
 
