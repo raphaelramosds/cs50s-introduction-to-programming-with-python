@@ -1,16 +1,9 @@
 COKE_PRICE = 50
 VALID_COINS = [5, 10, 25]
 
-# Global variables
-# NOTE: DO NOT USE coke_machine OR coke_machine_static ON THE SAME PROCESS!!
-#       This is because they share the same global variables, and will interfere with each other.
-amount = 0
-change = 0
-
-def process(coin: str) -> bool:
-    global amount
-    global change
-
+# NOTE: Because `invoice` is a mutable object, the changes inside `process` will be reflected in the caller's scope. 
+#       This is basically how modifying by reference works in Python.
+def process(coin: str, invoice: dict) -> bool:
     if not coin.isnumeric():
         print("Please, input a number")
         return False
@@ -24,9 +17,9 @@ def process(coin: str) -> bool:
         )
         return False
 
-    amount = amount + coin
-    if amount >= COKE_PRICE:
-        change = amount - COKE_PRICE
+    invoice["total_inserted"] = invoice["total_inserted"] + coin
+    if invoice["total_inserted"] >= COKE_PRICE:
+        invoice["change"] = invoice["total_inserted"] - COKE_PRICE
 
     return True
 
@@ -35,21 +28,25 @@ def coke_machine_static(inputs: list) -> dict:
     """
     Testable version of coke_machine which does not depend upon stdin
     """
+    invoice = {"total_inserted": 0, "coke_price": COKE_PRICE, "change": 0}
+    
     for coin in inputs:
-        if not process(str(coin)):
+        if not process(str(coin), invoice):
             continue
 
-    return {"total_inserted": amount, "coke_price": COKE_PRICE, "change": change}
+    return invoice
 
 
 def coke_machine() -> None:
-    while amount < COKE_PRICE:
-        print("Amount Due: {}".format(COKE_PRICE - amount))
+    invoice = {"total_inserted": 0, "coke_price": COKE_PRICE, "change": 0}
+
+    while invoice["total_inserted"] < COKE_PRICE:
+        print("Amount Due: {}".format(COKE_PRICE - invoice["total_inserted"]))
         coin = input("Insert Coin: ")
-        if not process(coin):
+        if not process(coin, invoice):
             continue
 
     print("-" * 10)
-    print("Total inserted: {}".format(amount))
+    print("Total inserted: {}".format(invoice["total_inserted"]))
     print("Coke price: {}".format(COKE_PRICE))
-    print("Change Owed: {}".format(change))
+    print("Change Owed: {}".format(invoice["change"]))
